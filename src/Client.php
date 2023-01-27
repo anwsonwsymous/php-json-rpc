@@ -259,7 +259,7 @@ class Client
         if (
             is_array($input) &&
             (!array_key_exists('error', $input) || is_null($input['error'])) &&
-            $this->getVersion($input) &&
+            (!array_key_exists('jsonrpc', $input) || $this->getVersion($input)) &&
             $this->getId($input, $id) &&
             $this->getResult($input, $value)
         ) {
