@@ -189,7 +189,7 @@ class Client
      * the server reply string. You should have that decoded array value
      * to use as the input here.
      * @see self::decode()
-     * 
+     *
      * @param mixed $input
      * An array containing the JSON-decoded server reply
      *
@@ -258,7 +258,7 @@ class Client
     {
         if (
             is_array($input) &&
-            !array_key_exists('error', $input) &&
+            (!array_key_exists('error', $input) || is_null($input['error'])) &&
             $this->getVersion($input) &&
             $this->getId($input, $id) &&
             $this->getResult($input, $value)
